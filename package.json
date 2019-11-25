@@ -1,0 +1,35 @@
+{
+  "name": "react-concurrent-mode-filtering",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "@chakra-ui/core": "0.4.1",
+    "@emotion/core": "10.0.22",
+    "@emotion/styled": "10.0.23",
+    "date-fns": "^2.8.1",
+    "emotion-theming": "10.0.19",
+    "express": "^4.17.1",
+    "lorem-ipsum": "2.0.3",
+    "morgan": "^1.9.1",
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.0.1"
+  },
+  "scripts": {
+    "start:server": "PORT=4000 node server",
+    "start:client": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:4000",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
