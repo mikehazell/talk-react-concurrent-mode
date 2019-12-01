@@ -1,26 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Stack, Input } from "@chakra-ui/core";
-
-import { getPosts } from "../api";
 
 import { PageWrapper } from "../components/PageWrapper";
 import { PostList } from "../components/PostList";
 
-export default function List() {
+export default function List({ posts }) {
+  const postsData = posts.read();
   const [filter, setFilter] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    let canceled = false;
-    setLoading(true);
-    getPosts({ limit: 36, filter }).then(p => {
-      if (canceled) return;
-      setPosts(p);
-      setLoading(false);
-    });
-    return () => (canceled = true);
-  }, [filter]);
 
   return (
     <PageWrapper>
@@ -31,7 +17,7 @@ export default function List() {
           value={filter}
           onChange={event => setFilter(event.target.value)}
         />
-        <PostList posts={posts} loading={loading} />
+        <PostList posts={postsData} />
       </Stack>
     </PageWrapper>
   );
