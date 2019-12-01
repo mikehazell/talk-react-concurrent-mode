@@ -1,29 +1,17 @@
-import React from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { createRouter } from "./lib/createRouter";
 
 // Routes
-import List from "./pages/List";
-import Detail from "./pages/Detail";
-
 const routes = [
   {
     path: "/posts/:postId",
-    component: Detail
+    loadCode: () => import("./pages/Detail")
   },
   {
     path: "/",
-    component: List
+    loadCode: () => import("./pages/List")
   }
 ];
 
-const Router = () => (
-  <BrowserRouter>
-    <Switch>
-      {routes.map(r => (
-        <Route key={r.path} {...r} />
-      ))}
-    </Switch>
-  </BrowserRouter>
-);
+const { Router, Link } = createRouter(routes);
 
 export { Link, Router };
