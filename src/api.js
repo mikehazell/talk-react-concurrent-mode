@@ -3,12 +3,12 @@ export function getPosts({ filter, limit, relatedTo }) {
   if (limit) url.searchParams.set("limit", limit);
   if (filter) url.searchParams.set("filter", filter);
   if (relatedTo) url.searchParams.set("relatedTo", relatedTo);
-  return get(url);
+  return wrapPromise(get(url));
 }
 
 export function getPostById({ id }) {
   const url = new URL(`/api/posts/${id}`, urlBase);
-  return get(url);
+  return wrapPromise(get(url));
 }
 
 async function get(url) {
