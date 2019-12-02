@@ -1,5 +1,5 @@
 import { createRouter } from "./lib/createRouter";
-import { getPosts, getPostById } from "./api";
+import { getPosts, getPostById, getCommentsByPostId } from "./api";
 
 // Routes
 const routes = [
@@ -8,7 +8,8 @@ const routes = [
     loadCode: () => import("./pages/Detail"),
     loadData: ({ postId }) => ({
       post: getPostById({ id: postId }),
-      relatedPosts: getPosts({ limit: 3, relatedTo: postId })
+      relatedPosts: getPosts({ limit: 3, relatedTo: postId }),
+      comments: getCommentsByPostId({ id: postId })
     })
   },
   {

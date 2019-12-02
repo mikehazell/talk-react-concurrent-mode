@@ -11,6 +11,11 @@ export function getPostById({ id }) {
   return wrapPromise(get(url));
 }
 
+export function getCommentsByPostId({ id }) {
+  const url = new URL(`/api/comments/${id}`, urlBase);
+  return wrapPromise(get(url));
+}
+
 async function get(url) {
   const response = await fetch(url.toString(), {
     contentType: "application/json"
